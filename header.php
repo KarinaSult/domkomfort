@@ -63,10 +63,16 @@ session_start();
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
+            padding: 5px 0;
         }
         
         .nav a:hover {
             color: #0984e3;
+        }
+        
+        .nav a.active {
+            color: #0984e3;
+            border-bottom: 2px solid #0984e3;
         }
         
         .btn {
@@ -245,17 +251,21 @@ session_start();
             <div class="header-content">
                 <a href="/Курсовая/index.php" class="logo">ДомКомфорт</a>
                 <nav class="nav">
-                    <a href="/Курсовая/index.php">Главная</a>
-                    <a href="/Курсовая/pages/catalog.php">Каталог</a>
+                    <?php
+                    $current_page = basename($_SERVER['REQUEST_URI']);
+                    $current_page = strtok($current_page, '?');
+                    ?>
+                    <a href="/Курсовая/index.php" class="<?php echo ($current_page == 'index.php' || $current_page == '') ? 'active' : ''; ?>">Главная</a>
+                    <a href="/Курсовая/pages/catalog.php" class="<?php echo ($current_page == 'catalog.php') ? 'active' : ''; ?>">Каталог</a>
                     <?php if (isset($_SESSION['user_id'])): ?>
-                        <a href="/Курсовая/pages/cabinet.php">Личный кабинет</a>
+                        <a href="/Курсовая/pages/cabinet.php" class="<?php echo ($current_page == 'cabinet.php') ? 'active' : ''; ?>">Личный кабинет</a>
                         <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin'): ?>
-                            <a href="/Курсовая/admin.php">👑 Админ</a>
+                            <a href="/Курсовая/admin.php" class="<?php echo ($current_page == 'admin.php') ? 'active' : ''; ?>">👑 Админ</a>
                         <?php endif; ?>
                         <a href="/Курсовая/logout.php">Выйти</a>
                     <?php else: ?>
-                        <a href="/Курсовая/pages/login.php">Вход</a>
-                        <a href="/Курсовая/pages/register.php">Регистрация</a>
+                        <a href="/Курсовая/pages/login.php" class="<?php echo ($current_page == 'login.php') ? 'active' : ''; ?>">Вход</a>
+                        <a href="/Курсовая/pages/register.php" class="<?php echo ($current_page == 'register.php') ? 'active' : ''; ?>">Регистрация</a>
                     <?php endif; ?>
                 </nav>
             </div>
