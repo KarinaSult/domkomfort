@@ -22,7 +22,7 @@ $latest_flats = array_slice($flats, -3);
 
 <div style="background: white; border-radius: 24px; padding: 40px; margin: 40px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
     <h2 style="text-align: center; margin-bottom: 10px; color: #2d3436;">🏦 Ипотечный калькулятор 2026</h2>
-    <p style="text-align: center; color: #666; margin-bottom: 30px;">Актуальная ставка 20.5% годовых</p>
+    <p style="text-align: center; color: #666; margin-bottom: 30px;">Актуальная ставка 18.5% годовых</p>
     
     <div style="margin-bottom: 25px;">
         <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
@@ -64,7 +64,7 @@ $latest_flats = array_slice($flats, -3);
             </div>
             <div>
                 <div style="color: #666;">Ставка 2026</div>
-                <div style="color: #e74c3c;">20.5%</div>
+                <div style="color: #e74c3c;">18.5%</div>
             </div>
         </div>
     </div>
@@ -103,7 +103,7 @@ function updateMortgage() {
     let price = parseFloat(document.getElementById('priceRange').value);
     let initialPercent = parseFloat(document.getElementById('initialRange').value);
     let years = parseFloat(document.getElementById('yearsRange').value);
-    let rate = 20.5;
+    let rate = 18.5;
     
     document.getElementById('priceValue').innerText = price.toLocaleString('ru-RU') + ' ₽';
     document.getElementById('initialValue').innerText = initialPercent + '% (' + Math.round(price * initialPercent / 100).toLocaleString('ru-RU') + ' ₽)';
